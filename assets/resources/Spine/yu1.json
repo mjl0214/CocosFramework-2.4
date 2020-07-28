@@ -1,0 +1,190 @@
+{
+"skeleton": { "hash": "PV4aa6Yu86BESe5mNmFvFzoRK3U", "spine": "3.6.53", "width": 66.03, "height": 72.7, "images": "" },
+"bones": [
+	{ "name": "root" },
+	{ "name": "1_shen", "parent": "root" },
+	{ "name": "1_qi2", "parent": "1_shen", "x": 20.38, "y": -1.42 },
+	{ "name": "1_wei", "parent": "1_shen", "x": 27.29, "y": 27.67 },
+	{ "name": "1_yan", "parent": "1_shen", "x": 7.42, "y": -11.79 }
+],
+"slots": [
+	{ "name": "yu01_shen", "bone": "1_shen", "attachment": "yu01_shen" },
+	{ "name": "yu01_qi", "bone": "1_shen", "attachment": "yu01_qi" },
+	{ "name": "yu01_qi2", "bone": "1_qi2", "attachment": "yu01_qi2" },
+	{ "name": "yu01_wei", "bone": "1_wei", "attachment": "yu01_wei" },
+	{ "name": "yu01_yan", "bone": "1_yan", "attachment": "yu01_yan" }
+],
+"skins": {
+	"default": {
+		"yu01_qi": {
+			"yu01_qi": { "x": 4.61, "y": 17.57, "width": 19, "height": 23 }
+		},
+		"yu01_qi2": {
+			"yu01_qi2": { "x": 5.25, "y": 1.42, "width": 16, "height": 13 }
+		},
+		"yu01_shen": {
+			"yu01_shen": { "width": 58, "height": 59 }
+		},
+		"yu01_wei": {
+			"yu01_wei": { "x": 3.24, "y": 6.03, "width": 13, "height": 19 }
+		},
+		"yu01_yan": {
+			"yu01_yan": { "x": 0.36, "y": -0.31, "width": 8, "height": 10 }
+		}
+	}
+},
+"animations": {
+	"yu": {
+		"slots": {
+			"yu01_qi": {
+				"attachment": [
+					{ "time": 0, "name": "yu01_qi" }
+				]
+			},
+			"yu01_qi2": {
+				"attachment": [
+					{ "time": 0, "name": "yu01_qi2" }
+				]
+			},
+			"yu01_shen": {
+				"attachment": [
+					{ "time": 0, "name": "yu01_shen" }
+				]
+			},
+			"yu01_wei": {
+				"attachment": [
+					{ "time": 0, "name": "yu01_wei" }
+				]
+			},
+			"yu01_yan": {
+				"attachment": [
+					{ "time": 0, "name": "yu01_yan" }
+				]
+			}
+		},
+		"bones": {
+			"1_shen": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": -3 },
+					{
+						"time": 0.6667,
+						"x": 0,
+						"y": 3,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 1.3333,
+						"x": 0,
+						"y": -3,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 2,
+						"x": 0,
+						"y": 3,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 2.6667, "x": 0, "y": -3 }
+				]
+			},
+			"1_qi2": {
+				"rotate": [
+					{
+						"time": 0,
+						"angle": 15,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.3333,
+						"angle": -40,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.6667,
+						"angle": 15,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 1,
+						"angle": -40,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 1.5,
+						"angle": 15,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 2,
+						"angle": -40,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 2.6667, "angle": 15 }
+				]
+			},
+			"1_wei": {
+				"scale": [
+					{
+						"time": 0,
+						"x": 1.5,
+						"y": 1,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.2667,
+						"x": 0.5,
+						"y": 1,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.5333,
+						"x": 1.5,
+						"y": 1,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 0.8,
+						"x": 0.5,
+						"y": 1,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 1.1,
+						"x": 1.5,
+						"y": 1,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 1.4,
+						"x": 0.5,
+						"y": 1,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 1.7333,
+						"x": 1.5,
+						"y": 1,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{
+						"time": 2.1667,
+						"x": 0.5,
+						"y": 1,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 2.6667, "x": 1.5, "y": 1 }
+				]
+			},
+			"1_yan": {
+				"translate": [
+					{ "time": 0, "x": -0.47, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": -0.47, "y": 0 },
+					{ "time": 1.4, "x": -2.68, "y": 0, "curve": "stepped" },
+					{ "time": 2.4333, "x": -2.68, "y": 0 },
+					{ "time": 2.5, "x": -0.47, "y": 0 }
+				]
+			}
+		}
+	}
+}
+}

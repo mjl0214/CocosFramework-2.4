@@ -1,0 +1,42 @@
+{
+"skeleton": { "hash": "PE4y7I2hw6ARYNVf0hi7/APNdGo", "spine": "3.7.94", "width": 320, "height": 321, "images": "", "audio": "" },
+"bones": [
+	{ "name": "root" },
+	{ "name": "bone", "parent": "root", "length": 38.21, "rotation": 47.12, "x": -89.5, "y": -116 }
+],
+"slots": [
+	{ "name": "yaoyiyao", "bone": "bone", "attachment": "yaoyiyao" }
+],
+"skins": {
+	"default": {
+		"yaoyiyao": {
+			"yaoyiyao": { "x": 146.27, "y": 13.69, "rotation": -47.12, "width": 320, "height": 321 }
+		}
+	}
+},
+"animations": {
+	"animation": {
+		"slots": {
+			"yaoyiyao": {
+				"attachment": [
+					{ "time": 0, "name": "yaoyiyao" }
+				]
+			}
+		},
+		"bones": {
+			"bone": {
+				"rotate": [
+					{ "time": 0, "angle": 0 },
+					{ "time": 0.1333, "angle": 32.32 },
+					{ "time": 0.2667, "angle": 0 },
+					{ "time": 0.4, "angle": 32.32 },
+					{ "time": 0.5333, "angle": 0 },
+					{ "time": 0.7, "angle": 32.32 },
+					{ "time": 0.8667, "angle": 0, "curve": "stepped" },
+					{ "time": 1.4, "angle": 0 }
+				]
+			}
+		}
+	}
+}
+}

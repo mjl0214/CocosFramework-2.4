@@ -1,0 +1,13 @@
+
+yaoyiyao.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+yaoyiyao
+  rotate: false
+  xy: 2, 2
+  size: 320, 321
+  orig: 320, 321
+  offset: 0, 0
+  index: -1

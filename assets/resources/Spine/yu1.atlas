@@ -1,0 +1,41 @@
+
+yu1.png
+size: 128,64
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+yu01_qi
+  rotate: false
+  xy: 62, 38
+  size: 19, 23
+  orig: 19, 23
+  offset: 0, 0
+  index: -1
+yu01_qi2
+  rotate: false
+  xy: 83, 48
+  size: 16, 13
+  orig: 16, 13
+  offset: 0, 0
+  index: -1
+yu01_shen
+  rotate: false
+  xy: 2, 2
+  size: 58, 59
+  orig: 58, 59
+  offset: 0, 0
+  index: -1
+yu01_wei
+  rotate: false
+  xy: 62, 17
+  size: 13, 19
+  orig: 13, 19
+  offset: 0, 0
+  index: -1
+yu01_yan
+  rotate: false
+  xy: 62, 5
+  size: 8, 10
+  orig: 8, 10
+  offset: 0, 0
+  index: -1
