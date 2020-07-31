@@ -1,7 +1,7 @@
 /*
  * @Author: jacklove
  * @Date: 2019-12-26 12:48:52
- * @LastEditTime: 2020-07-24 12:12:51
+ * @LastEditTime: 2020-07-29 12:07:10
  * @LastEditors: jacklove
  * @Description: 
  * @FilePath: \NewProject_test\assets\Scripts\Frameworks\manager\LogMgr.js
@@ -42,6 +42,7 @@ module.exports = {
 
     _writeLog(type, tag, ...subst)
     {
+        // console.error('_writeLog', this.m_print);
         if (!this.m_print) {
             return;
         }
@@ -56,7 +57,7 @@ module.exports = {
             console.error(tag, ...subst);
         }
 
-        
+        // console.error('_writeLog 2', cc.sys.isNative, cc.sys.os, cc.sys.OS_ANDROID);
         if (cc.sys.isNative && cc.sys.os == cc.sys.OS_ANDROID) {
             this._writeToFile(type, tag, ...subst);
         }
@@ -84,6 +85,7 @@ module.exports = {
 
     _writeToFile(type, tag, ...subst)
     {
+        // console.error('_writeToFile', type, CC_JSB);
         if (!CC_JSB) { return; }
         
         this._creatFile();
@@ -105,6 +107,7 @@ module.exports = {
         this.m_readBuffer += '\n';
 
         if (this.m_logPath != '') {
+            // console.error('writeStringToFile', this.m_logPath, this.m_readBuffer);
             jsb.fileUtils.writeStringToFile(this.m_readBuffer, this.m_logPath);
         }
     },

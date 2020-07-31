@@ -1,16 +1,93 @@
 /*
  * @Author: jacklove
  * @Date: 2020-04-10 10:46:16
- * @LastEditTime: 2020-04-14 13:22:21
+ * @LastEditTime: 2020-07-30 10:35:42
  * @LastEditors: jacklove
  * @Description: 
- * @FilePath: \client\assets\Scripts\Frameworks\helper\CocosHelper.js
+ * @FilePath: \NewProject_test\assets\Scripts\Frameworks\helper\CocosHelper.js
  */
+
+cc.Node.prototype.setId = function (id) {
+    this.m_id = id;
+}
+
+cc.Node.prototype.getId = function () {
+    return this.m_id;
+}
+
 module.exports = {
 
     _camera_node_ : null,
     _camera_ : null,
     m_fullPath : '/storage/emulated/0/',
+
+    treeNode (node = cc.director.getScene()) {
+        let nameStyle =
+            `color: ${node.parent === null || node.activeInHierarchy ? 'green' : 'grey'}; font-size: 14px;font-weight:bold`;
+        let nameValue = `%c${node.name}`;
+        if (node.childrenCount > 0) {
+            console.groupCollapsed(nameValue, nameStyle);
+            for (let i = 0; i < node.childrenCount; i++) {
+                this.treeNode(node.children[i]);
+            }
+            console.groupEnd();
+        } else {
+            console.log(nameValue, nameStyle);
+        }
+    },
+
+    findNodeById(id, node)
+    {
+        if (!cc.isValid(node)) {
+            if (cc.isValid(cc.director.getScene())) {
+                node = cc.director.getScene().getChildByName('Canvas');
+            }
+            else
+            {
+                return null;
+            }
+        }
+        if (node.m_id && node.m_id == id) {
+            return node;
+        }
+
+        for (let index = node.children.length - 1; index >= 0; index--) {
+            const child = node.children[index];
+            var find_node = this.findNodeById(id, child);
+            if (find_node) {
+                return find_node;
+            }
+        }
+
+        return null;
+    },
+
+    findNodePath(node)
+    {
+        if (!cc.isValid(node)) { return ''; }
+
+        if (node instanceof cc.Node) { }
+        else { node = node.node; }
+
+        if (!cc.isValid(node)) { return ''; }
+
+        return this._findPath(node, node.name);
+    },
+
+    _findPath(node, sPath)
+    {
+        if (!cc.isValid(node)) { return sPath; }
+
+        if (node instanceof cc.Node) { }
+        else { node = node.node; }
+
+        if (!cc.isValid(node)) { return sPath; }
+
+        if (!cc.isValid(node.getParent())) { return sPath; }
+        else { sPath = node.getParent().name + '/' + sPath; }
+
+        return this._findPath(node.getParent(), sPath);
+    },
 
     capture(file_name, camera = null)
     {

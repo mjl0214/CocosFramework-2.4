@@ -1,7 +1,7 @@
 /*
  * @Author: jacklove
  * @Date: 2020-07-22 09:35:30
- * @LastEditTime: 2020-07-24 15:39:48
+ * @LastEditTime: 2020-07-30 11:40:02
  * @LastEditors: jacklove
  * @Description: 
  * @FilePath: \NewProject_test\assets\Scripts\Scene\Begin\Begin.js

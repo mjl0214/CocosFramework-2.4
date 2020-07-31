@@ -93,13 +93,13 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 45
-      },
-      {
         "__id__": 46
       },
       {
         "__id__": 47
+      },
+      {
+        "__id__": 48
       }
     ],
     "_prefab": null,
@@ -189,7 +189,7 @@
       "array": [
         0,
         0,
-        482.66031449354915,
+        484.10820071550125,
         0,
         0,
         0,
@@ -2082,14 +2082,30 @@
     "_id": "c6nJ2q5ppAxKJC787htfvA"
   },
   {
-    "__type__": "a05e8cvUdxOzayXZ2weR709",
+    "__type__": "84181kiNOtApJUxazX/E73o",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 42
     },
     "_enabled": true,
-    "_id": "8fOw52JAlOxp8qa08LrATj"
+    "bind_type": 2,
+    "show_bind_type": "MVSkel",
+    "s_uuid": "84PnB8tF5OUoS5bpqaAgOO",
+    "handle_cls": {
+      "__id__": 45
+    },
+    "_N$bind_mode": 0,
+    "_id": "84PnB8tF5OUoS5bpqaAgOO"
+  },
+  {
+    "__type__": "MVSkel",
+    "bindNode": {
+      "__id__": 42
+    },
+    "watchPathArr": [
+      "player.test_spine"
+    ]
   },
   {
     "__type__": "cc.Canvas",

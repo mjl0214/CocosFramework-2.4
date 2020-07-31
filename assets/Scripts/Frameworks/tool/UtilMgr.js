@@ -1,10 +1,10 @@
 /*
  * @Author: jacklove
  * @Date: 2019-12-23 17:31:34
- * @LastEditTime: 2020-06-08 10:32:49
- * @LastEditors: zhaozhifei
+ * @LastEditTime: 2020-07-30 15:36:44
+ * @LastEditors: jacklove
  * @Description: 
- * @FilePath: \client\assets\Scripts\Frameworks\tool\UtilMgr.js
+ * @FilePath: \NewProject_test\assets\Scripts\Frameworks\tool\UtilMgr.js
  */
 
 String.prototype.format = function(args) { 
@@ -19,7 +19,7 @@ String.prototype.format = function(args) {
         else { 
             for (var i = 0; i < arguments.length; i++) { 
                 if(arguments[i]==undefined) { 
-                    return ""; 
+                    return ''; 
                 } 
                 else { 
                     var reg=new RegExp ("({["+i+"]})","g"); 
@@ -34,13 +34,13 @@ String.prototype.format = function(args) {
     } 
 };
 
-cc.Node.prototype.setId = function (id) {
-    this.m_id = id;
-}
+// cc.Node.prototype.setId = function (id) {
+//     this.m_id = id;
+// }
 
-cc.Node.prototype.getId = function () {
-    return this.m_id;
-}
+// cc.Node.prototype.getId = function () {
+//     return this.m_id;
+// }
 
 module.exports = {
 
@@ -56,47 +56,6 @@ module.exports = {
         var encryptjs=require('encryptjs');
         var dataString = encryptjs.decrypt(encrypted, secretkey, nBits);
         return dataString;
-    },
-
-    treeNode (node = cc.director.getScene()) {
-        let nameStyle =
-            `color: ${node.parent === null || node.activeInHierarchy ? 'green' : 'grey'}; font-size: 14px;font-weight:bold`;
-        let nameValue = `%c${node.name}`;
-        if (node.childrenCount > 0) {
-            console.groupCollapsed(nameValue, nameStyle);
-            for (let i = 0; i < node.childrenCount; i++) {
-                this.treeNode(node.children[i]);
-            }
-            console.groupEnd();
-        } else {
-            console.log(nameValue, nameStyle);
-        }
-    },
-
-    findNodeById(id, node)
-    {
-        if (node == null) {
-            if (cc.isValid(cc.director.getScene())) {
-                node = cc.director.getScene().getChildByName('Canvas');
-            }
-            else
-            {
-                return null;
-            }
-        }
-        if (node.m_id && node.m_id == id) {
-            return node;
-        }
-
-        for (let index = node.children.length - 1; index >= 0; index--) {
-            const child = node.children[index];
-            var find_node = this.findNodeById(id, child);
-            if (find_node) {
-                return find_node;
-            }
-        }
-
-        return null;
     },
 
     random2Int(min, max){

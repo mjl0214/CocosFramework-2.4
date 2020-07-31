@@ -1,7 +1,7 @@
 /*
  * @Author: jacklove
  * @Date: 2020-07-22 16:13:00
- * @LastEditTime: 2020-07-28 15:33:57
+ * @LastEditTime: 2020-07-29 12:58:38
  * @LastEditors: jacklove
  * @Description: 
  * @FilePath: \NewProject_test\assets\Scripts\Prefab\DialogTest.js
@@ -25,7 +25,7 @@ cc.Class({
     onEnter(params)
     {// 对话框被激活时
         // console.log('DialogBase onEnable');
-        unit.EventMgr.dispatch_s('test', 'test', {data : 12});
+        unit.EventMgr.dispatch_s('test', 'test', {data : uTool.UtilMgr.random2Int(1, 1000)});
     },
 
     onLeave()

@@ -3,7 +3,7 @@
  * @Author: jacklove
  * @Date: 2019-11-15 17:29:36
  * @LastEditors: jacklove
- * @LastEditTime: 2020-07-23 17:56:05
+ * @LastEditTime: 2020-07-30 09:50:28
  */
 
 module.exports = {
@@ -19,7 +19,7 @@ module.exports = {
                 unit.ResMgr._logger();
                 break;
             case cc.macro.KEY.t:
-                uTool.UtilMgr.treeNode();
+                unit.CocosHelper.treeNode();
                 break;
             default:
                 break;

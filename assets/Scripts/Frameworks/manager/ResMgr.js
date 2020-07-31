@@ -1,7 +1,7 @@
 /*
  * @Author: jacklove
  * @Date: 2020-07-22 10:37:15
- * @LastEditTime: 2020-07-23 17:53:32
+ * @LastEditTime: 2020-07-31 14:20:33
  * @LastEditors: jacklove
  * @Description: 
  * @FilePath: \NewProject_test\assets\Scripts\Frameworks\manager\ResMgr.js
@@ -68,7 +68,7 @@ module.exports = {
         
         this.loadAsset(url, sp.SkeletonData, (skeletonData) => {
             this._repSkeletonData(skeleton, skeletonData);
-            if (callback) { callback(); }
+            if (callback) { callback(skeletonData); }
         })
     },
 

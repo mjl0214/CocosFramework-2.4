@@ -3,7 +3,7 @@
  * @Author: jacklove
  * @Date: 2019-10-14 10:43:12
  * @LastEditors: jacklove
- * @LastEditTime: 2020-07-28 12:03:04
+ * @LastEditTime: 2020-07-30 12:34:31
  */
 
 console.log('InitFramework')
@@ -122,10 +122,10 @@ import DialogDef from './manager/dialog/DialogDef';
 unit.DialogDef = DialogDef;
 
 // MVC管理器
-import MVMgr from './manager/mvc/MVMgr';
+import MVMgr from './mvc/MVMgr';
 unit.MVMgr = MVMgr;
 
-import MVDef from './manager/mvc/MVDef';
+import MVDef from './mvc/MVDef';
 unit.MVDef = MVDef;
 
 import BundleMgr from './manager/BundleMgr';

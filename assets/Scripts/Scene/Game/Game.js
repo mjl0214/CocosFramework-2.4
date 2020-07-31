@@ -1,7 +1,7 @@
 /*
  * @Author: jacklove
  * @Date: 2020-07-24 13:40:08
- * @LastEditTime: 2020-07-24 15:49:51
+ * @LastEditTime: 2020-07-31 14:57:11
  * @LastEditors: jacklove
  * @Description: 
  * @FilePath: \NewProject_test\assets\Scripts\Scene\Game\Game.js
@@ -55,6 +55,8 @@ cc.Class({
             this.layer_fish.addChild(fish);
             fish.setPosition(uTool.UtilMgr.random2Int(-300, 300), uTool.UtilMgr.random2Int(-600, 600));
         });
+
+        unit.MVMgr.dispatch(uLogic.MVDef.gold, {str : 12});
     },
 
     onClickRemoveAll()
@@ -64,18 +66,29 @@ cc.Class({
 
     onClickRepSkel()
     {
-        // unit.SceneMgr.loadingScene('Begin');
+
         this._idxSp++;
         if (this._idxSp >= this._spList.length) {
             this._idxSp = 0;
         }
-        unit.ResMgr.replaceSkel(this.sp_box, this._spList[this._idxSp].url, ()=>{
-            var play_data = {
-                trackIndex : 0,
-                name : this._spList[this._idxSp].aniName,
-            };
 
-            this.sp_box.node.getComponent('SpineUnit').play(play_data);
-        });
+        // var send_data = {
+        //     player : {
+        //         test_spine : [
+        //             this._spList[this._idxSp].url, 
+        //             {
+        //                 trackIndex : 0,
+        //                 name : this._spList[this._idxSp].aniName,
+        //             }
+        //         ],
+        //     },
+        // }
+        // unit.MVMgr.dispatch(send_data);
+
+        var play_data = {
+            trackIndex : 0,
+            name : this._spList[this._idxSp].aniName,
+        };
+        unit.MVMgr.dispatchSkel('player.test_spine', this._spList[this._idxSp].url, play_data);
     },
 });

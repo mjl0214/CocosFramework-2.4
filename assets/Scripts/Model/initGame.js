@@ -1,7 +1,7 @@
 /*
  * @Author: jacklove
  * @Date: 2020-07-22 16:04:19
- * @LastEditTime: 2020-07-27 17:15:55
+ * @LastEditTime: 2020-07-30 10:52:53
  * @LastEditors: jacklove
  * @Description: 
  * @FilePath: \NewProject_test\assets\Scripts\Model\initGame.js
@@ -19,6 +19,7 @@ if (window.uLogic == null) {
 import RegDef from './Common/RegDef';
 uLogic.PoolID = RegDef.PoolID;
 uLogic.DialogID = RegDef.DialogID;
+uLogic.MVDef = RegDef.MVDef;
 
 // 支付管理器
 import PayMgr from './Common/PayMgr';
@@ -69,6 +70,8 @@ function __init__()
     unit.PoolMgr.registerPool(uLogic.PoolID);
     // 注册对话框
     unit.DialogMgr.registerDialog(uLogic.DialogID);
+    //
+    unit.MVMgr.registerEvent(uLogic.MVDef);
 
     // unit.PoolMgr.debugPool();
 };
