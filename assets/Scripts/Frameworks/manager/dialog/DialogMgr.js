@@ -1,16 +1,14 @@
 /*
  * @Author: jacklove
  * @Date: 2019-12-11 15:20:29
- * @LastEditTime: 2020-07-28 16:09:17
+ * @LastEditTime: 2020-08-19 10:50:37
  * @LastEditors: jacklove
  * @Description: 
  * @FilePath: \NewProject_test\assets\Scripts\Frameworks\manager\dialog\DialogMgr.js
  */
 
-let DialogDef = require("DialogDef")
-
 module.exports = {
-
+    m_register_list : new Object(), // 注册列表
     m_alloc_index : 0,              // 分配索引
     m_baseZIndex : 1000,            // 基础ZIndex
     m_dialogs : new Array(),        // 对话框节点列表
@@ -18,9 +16,7 @@ module.exports = {
     m_masks : new Array(),          // 遮罩节点列表
     m_maskIndex : 0,                // 遮罩索引
     m_factory : new Object(),       // 工厂状态
-    m_showList : new Array(),       // 显示队列
-    m_showLastID : -1,
-    event_cache : new Object(),     // 消息队列
+    m_create_list : new Array(),    // 创建队列
 
     __init__()
     {
@@ -32,7 +28,6 @@ module.exports = {
     {
         // 清理所有预制体
         this.m_maskPool.clear();
-        // this.m_dialogs.length = 0;
         this.m_factory = new Object();
     },
 
@@ -48,64 +43,26 @@ module.exports = {
 
     registerDialog(id_map)
     {
-        DialogDef.DialogID = cc.Enum(id_map);
-        for (const dialog_id in DialogDef.DialogID) {
-            const url = DialogDef.DialogID[dialog_id];
+        this.m_register_list = new Object();
+        for (const dialog_id in id_map) {
+            const url = id_map[dialog_id];
+            this.m_register_list[dialog_id] = url;
+            this.m_register_list[url] = dialog_id;
             unit.PoolMgr.initPool(dialog_id, url);
-        }
-    },
-
-    addShowList(dialog_id, params = {})
-    {
-        this.m_showList.push({dialog_id : dialog_id, params : params, });
-    },
-
-    clearShowList()
-    {
-        this.m_showList.length = 0;
-        this.m_showLastID = -1;
-    },
-
-    showList(close_id = -1)
-    {
-        // console.error(close_id, this.m_showList);
-        if (this.m_showList.length <= 0) {
-            return;
-        }
-
-        var data = this.m_showList[0];
-        if (close_id == -1 || close_id == this.m_showLastID) {
-            this.showDialog(data.dialog_id, data.params);
-            this.m_showLastID = data.dialog_id;
-            this.m_showList.splice(0, 1);
         }
     },
 
     showDialog(dialog_id, params = {})
     {
         var dialog_name = this._getNameById(dialog_id);
-        if (dialog_name == null) {
-            console.error('对话框不存在 id =[' + dialog_id + ']');
-            return null;
-        }
+        if (dialog_name == null) { console.error('对话框不存在 id =[' + dialog_id + ']'); return; }
 
-        var zIndex = this.allocDialogIndex();
-
-        var _dialog_node_ = this.getDialog(dialog_id);
-        var _dialog_comp_ = null;
-        if (cc.isValid(_dialog_node_)) {
-            _dialog_comp_ = _dialog_node_.getComponent('DialogBase');
-        }
-
-        if (_dialog_comp_ && _dialog_comp_.isSingle()) {
-            this.reopenDialog(dialog_id, params, zIndex);
-        } else {
-            this.newDialog(dialog_id, params, zIndex); 
-        }
-
-        
+        var _dialog_comp_ = this._getDialogComponent(dialog_id);
+        if (_dialog_comp_ && _dialog_comp_.isSingle()) { this.reopenDialog(dialog_id, params); }
+        else { this.newDialog(dialog_id, params); }
     },
 
+    // 分配对话框层级索引
     allocDialogIndex()
     {
         this.m_alloc_index += 2;
@@ -116,22 +73,27 @@ module.exports = {
         return audo_index;
     },
 
-    reopenDialog(dialog_id, params, zIndex)
+    _getDialogComponent(dialog_id)
     {
         var _dialog_node_ = this.getDialog(dialog_id);
-
-        if (!cc.isValid(_dialog_node_)) {
-            return;
-        }
-
+        if (!cc.isValid(_dialog_node_)) { return null; }
         var _dialog_comp_ = _dialog_node_.getComponent('DialogBase');
+        return _dialog_comp_;
+    },
+
+    // 重新打开弹窗
+    reopenDialog(dialog_id, params)
+    {
+        var zIndex = this.allocDialogIndex();
+        var _dialog_comp_ = this._getDialogComponent(dialog_id);
         if (_dialog_comp_) {
             // 重置显示层级
             this.setDialogZIndex(_dialog_node_, zIndex);
             // 重调进入函数
             _dialog_comp_.onEnter(params);
 
-            if (_dialog_comp_._getState() == DialogDef.DialogState.closing || _dialog_comp_._getState() == DialogDef.DialogState.closed) {
+            var dlg_state = _dialog_comp_._getState();
+            if (dlg_state == unit.DialogDef.DialogState.closing || dlg_state == unit.DialogDef.DialogState.closed) {
                 // 重新播放开启动画
                 _dialog_comp_._playOpenAni();
             }
@@ -231,10 +193,7 @@ module.exports = {
         }
         
         this._subMask(maskId);
-
         this._autoMaxZIndex();
-
-        this.showList(dialog_id);
     },
 
     _removeMask(mask_node)
@@ -296,8 +255,9 @@ module.exports = {
         return this.m_factory[dialog_name];
     },
 
-    newDialog(dialog_id, params, zIndex)
+    newDialog(dialog_id, params)
     {
+        var zIndex = this.allocDialogIndex();
         var dialog_name = this._getNameById(dialog_id);
         if (this._getFactoryState(dialog_id) == 'creating') {
             console.warn('[' + dialog_name + ']正在创建！');
@@ -308,12 +268,11 @@ module.exports = {
         var mask_id = this.allocMaskIndex();
 
         this._createDialog(dialog_id, mask_id, params, zIndex);
-        this._createMask(dialog_id, mask_id, params, zIndex);
-
     },
 
     _initDialog(dialog_node, dialog_id, mask_id, params, zIndex)
     {
+        this._createMask(dialog_id, mask_id, params, zIndex);
         this._getParent().addChild(dialog_node, zIndex);
         this.m_dialogs.push(dialog_node);
 
@@ -324,43 +283,9 @@ module.exports = {
         _dialog_comp_.__dialog_name__ = dialog_name;
         _dialog_comp_.dialog_id = dialog_id;
         _dialog_comp_._setMaskId(mask_id);
-        // _dialog_comp_.onEnter(params);
-        // _dialog_comp_._playOpenAni();
-        
-        this._syncDialogSetting(dialog_id, mask_id, params);
-    },
-
-    _createDialog(dialog_id, mask_id, params, zIndex)
-    {
-        var dialog_name = this._getNameById(dialog_id);
-        unit.PoolMgr.getPerfab(dialog_name, (_dialog_node_) => {
-            if (cc.isValid(_dialog_node_)) {
-                this._initDialog(_dialog_node_, dialog_id, mask_id, params, zIndex);
-            }
-            else
-            {
-                console.error('[' + dialog_id + ']创建失败');
-                this._setFactoryState(dialog_id, 'created');
-            }
-        });
-    },
-
-    _syncDialogSetting(dialog_id, mask_id, params)
-    {
-        // mask
-        var _mask_node_ = this._getMask(mask_id);
-        if (!cc.isValid(_mask_node_)) { return; }
-
-        // dialog
-        var _dialog_node_ = this.getDialog(dialog_id);
-        if (!cc.isValid(_dialog_node_)) { return; }
-
         // set state
         this._setFactoryState(dialog_id, 'created');
-
         // init
-        var _dialog_comp_ = _dialog_node_.getComponent('DialogBase');
-        
         this.setMaskMask(mask_id, _dialog_comp_._getIsMask());
         this.setMaskInput(mask_id, _dialog_comp_._getIsInput());
         this.setMaskOpacity(mask_id, _dialog_comp_.maskOpacity);
@@ -369,13 +294,26 @@ module.exports = {
         _dialog_comp_._playOpenAni();
     },
 
+    _createDialog(dialog_id, mask_id, params, zIndex)
+    {
+        var dialog_name = this._getNameById(dialog_id);
+        unit.PoolMgr.getPerfab(dialog_name, (_dialog_node_) => {
+            if (cc.isValid(_dialog_node_)) { 
+                this._initDialog(_dialog_node_, dialog_id, mask_id, params, zIndex); 
+            }
+            else {
+                console.error('[' + dialog_id + ']创建失败');
+                this._setFactoryState(dialog_id, 'created');
+            }
+        });
+    },
+
     _initMask(mask_node, dialog_id, mask_id, params, zIndex)
     {
         this._getParent().addChild(mask_node, zIndex - 1);
         mask_node.setPosition(cc.v2(0, 0));
         mask_node.__maskId__ = mask_id;
         this.m_masks.push(mask_node);
-        this._syncDialogSetting(dialog_id, mask_id, params);
 
     },
 
@@ -467,7 +405,7 @@ module.exports = {
 
     _getNameById(dialog_id)
     {
-        return DialogDef.DialogID[dialog_id];
+        return this.m_register_list[dialog_id];
     },
 
     _getParent()
