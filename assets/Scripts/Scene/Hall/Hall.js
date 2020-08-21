@@ -1,7 +1,7 @@
 /*
  * @Author: jacklove
  * @Date: 2020-07-24 11:17:23
- * @LastEditTime: 2020-07-31 17:05:42
+ * @LastEditTime: 2020-08-21 14:56:47
  * @LastEditors: jacklove
  * @Description: 
  * @FilePath: \NewProject_test\assets\Scripts\Scene\Hall\Hall.js
@@ -116,7 +116,7 @@ cc.Class({
     onClickHead()
     {
         var url = 'http://thirdwx.qlogo.cn/mmopen/vi_32/CSFHlofer5mgZmoqv43PjBmtSjkMxIfytle66bLn5yAYGoa5HKJ8vIaMqCMiahWibUJnlMicHc5Azx7OZSZAcpNIQ/132';
-        unit.ResMgr.webImage(url, this.img_head);
+        unit.MVMgr.dispatchSprite('game.img_head', url, null, 'url');
     },
 
     onClickLoadBundle()

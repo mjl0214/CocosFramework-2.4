@@ -1,7 +1,7 @@
 /*
  * @Author: jacklove
  * @Date: 2019-12-23 17:31:34
- * @LastEditTime: 2020-07-30 15:36:44
+ * @LastEditTime: 2020-08-12 11:18:53
  * @LastEditors: jacklove
  * @Description: 
  * @FilePath: \NewProject_test\assets\Scripts\Frameworks\tool\UtilMgr.js
@@ -316,4 +316,16 @@ module.exports = {
         }
         return result;
     },
+
+    str2bytes(str)
+    {
+        var bytes = [];
+        for (var i = 0, len = str.length; i < len; ++i) {
+             var c = str.charCodeAt(i);
+             var byte = c & 0xff;
+             bytes.push(byte);
+        }    
+        return bytes;
+    },
+
 };

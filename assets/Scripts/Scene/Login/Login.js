@@ -1,7 +1,7 @@
 /*
  * @Author: jacklove
  * @Date: 2020-07-22 11:35:50
- * @LastEditTime: 2020-07-31 14:45:19
+ * @LastEditTime: 2020-08-12 11:19:34
  * @LastEditors: jacklove
  * @Description: 
  * @FilePath: \NewProject_test\assets\Scripts\Scene\Login\Login.js
@@ -29,6 +29,8 @@ cc.Class({
 
     start () {
         unit.ResMgr._logger();
+
+        console.error(uTool.UtilMgr.str2bytes('我是傻逼'));
     },
 
     // update (dt) {},

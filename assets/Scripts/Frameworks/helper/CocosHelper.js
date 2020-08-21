@@ -1,7 +1,7 @@
 /*
  * @Author: jacklove
  * @Date: 2020-04-10 10:46:16
- * @LastEditTime: 2020-07-30 10:35:42
+ * @LastEditTime: 2020-08-17 10:09:47
  * @LastEditors: jacklove
  * @Description: 
  * @FilePath: \NewProject_test\assets\Scripts\Frameworks\helper\CocosHelper.js
@@ -21,7 +21,7 @@ module.exports = {
     _camera_ : null,
     m_fullPath : '/storage/emulated/0/',
 
-    treeNode (node = cc.director.getScene()) {
+    treeNode(node = cc.director.getScene()) {
         let nameStyle =
             `color: ${node.parent === null || node.activeInHierarchy ? 'green' : 'grey'}; font-size: 14px;font-weight:bold`;
         let nameValue = `%c${node.name}`;
@@ -33,6 +33,48 @@ module.exports = {
             console.groupEnd();
         } else {
             console.log(nameValue, nameStyle);
+        }
+    },
+
+    findNodeByTouch(touch_pos, node)
+    {
+        if (!cc.isValid(node)) {
+            if (cc.isValid(cc.director.getScene())) {
+                node = cc.director.getScene().getChildByName('Canvas');
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        let result_list = [];
+        this._findNodeIn(touch_pos, node, result_list);
+        if (result_list.length > 0) {
+            return result_list[result_list.length - 1];
+        }
+        return null;
+    },
+
+    _findNodeIn(touch_pos, node, result_list)
+    {
+        var world_pos = node.convertToWorldSpaceAR(cc.v2(0, 0));
+        var size = node.getContentSize();
+        var polygon = [
+            cc.v2(world_pos.x + size.width / 2, world_pos.y + size.height / 2),
+            cc.v2(world_pos.x - size.width / 2, world_pos.y + size.height / 2),
+            cc.v2(world_pos.x - size.width / 2, world_pos.y - size.height / 2),
+            cc.v2(world_pos.x + size.width / 2, world_pos.y - size.height / 2),
+        ]
+        if (cc.Intersection.pointInPolygon(touch_pos, polygon)) {
+            result_list.push(node);
+        }
+
+        // for (let i = node.children.length - 1; i >= 0; i--) 
+        for (let i = 0; i < node.children.length - 1; i++)
+        {
+            const child = node.children[i];
+            this._findNodeIn(touch_pos, child, result_list);
         }
     },
 
@@ -51,7 +93,7 @@ module.exports = {
             return node;
         }
 
-        for (let index = node.children.length - 1; index >= 0; index--) {
+        for (let index = node.children.length; index >= 0; index--) {
             const child = node.children[index];
             var find_node = this.findNodeById(id, child);
             if (find_node) {

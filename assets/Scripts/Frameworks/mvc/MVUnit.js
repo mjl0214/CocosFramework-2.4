@@ -1,7 +1,7 @@
 /*
  * @Author: jacklove
  * @Date: 2020-03-29 11:16:51
- * @LastEditTime: 2020-07-31 17:24:32
+ * @LastEditTime: 2020-08-17 10:12:17
  * @LastEditors: jacklove
  * @Description: 
  * @FilePath: \NewProject_test\assets\Scripts\Frameworks\mvc\MVUnit.js
@@ -148,4 +148,11 @@ cc.Class({
     {
         if (this.handle_cls) { this.handle_cls.handleData(data); }
     },
+
+    getWatchs()
+    {
+        if (this.handle_cls) { return this.handle_cls.watchPathArr; }
+        return [];
+    },
+
 });

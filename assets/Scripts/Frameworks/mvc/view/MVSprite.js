@@ -1,7 +1,7 @@
 /*
  * @Author: jacklove
  * @Date: 2020-07-30 12:18:57
- * @LastEditTime: 2020-07-31 13:25:22
+ * @LastEditTime: 2020-08-21 14:56:15
  * @LastEditors: jacklove
  * @Description: 
  * @FilePath: \NewProject_test\assets\Scripts\Frameworks\mvc\view\MVSprite.js
@@ -51,14 +51,19 @@ cc.Class({
             const watchPath = this.watchPathArr[i];
             var cData = unit.MVMgr.findData(data, watchPath);
             if (cData) {
-                this._changeSprite(cData[0], cData[1]);
+                // console.error(cData)
+                this._changeSprite(cData[0], cData[1], cData[2]);
                 break;
             }
         } 
     },
 
-    _changeSprite(atlasName, frameName)
+    _changeSprite(atlasName, frameName, type)
     {
-        unit.ResMgr.replaceFrame(this.bindNode, atlasName, frameName, ()=>{});
+        if (type == 'url') {
+            unit.ResMgr.webImage(atlasName, this.bindNode);
+        } else {
+            unit.ResMgr.replaceFrame(this.bindNode, atlasName, frameName);
+        }
     },
 });

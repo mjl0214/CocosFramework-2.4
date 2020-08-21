@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.2" orientation="isometric" renderorder="left-down" width="6" height="6" tilewidth="133" tileheight="89" infinite="0" nextlayerid="4" nextobjectid="1">
+ <editorsettings>
+  <export target="test..tmx" format="tmx"/>
+ </editorsettings>
+ <tileset firstgid="1" name="map01" tilewidth="133" tileheight="89" tilecount="2" columns="1">
+  <image source="map01.png" width="188" height="188"/>
+ </tileset>
+ <layer id="2" name="layer2" width="6" height="6">
+  <data encoding="base64">
+   AAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAA
+  </data>
+ </layer>
+ <objectgroup id="3" name="obj1"/>
+ <layer id="1" name="layer1" width="6" height="6">
+  <data encoding="base64">
+   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAgAAAAIAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAA
+  </data>
+ </layer>
+</map>

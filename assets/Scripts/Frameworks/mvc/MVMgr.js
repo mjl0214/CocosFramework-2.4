@@ -1,7 +1,7 @@
 /*
  * @Author: jacklove
  * @Date: 2020-03-29 11:16:42
- * @LastEditTime: 2020-07-31 14:56:12
+ * @LastEditTime: 2020-08-21 14:40:24
  * @LastEditors: jacklove
  * @Description: 
  * @FilePath: \NewProject_test\assets\Scripts\Frameworks\mvc\MVMgr.js
@@ -10,9 +10,32 @@ module.exports = {
 
     m_bind_event : [],
 
+    m_debug : false,
+
     registerEvent(event_map)
     {
         unit.MVDef.BindDef = cc.Enum(event_map);
+    },
+
+    _debugInfo(comp, node)
+    {
+        if (!this.m_debug) {
+            return;
+        }
+
+        let path = unit.CocosHelper.findNodePath(node);
+        let watch_arr = comp.getWatchs();
+
+        let data = {
+            path : path,
+            watch_arr : watch_arr,
+        };
+        console.warn(path, watch_arr);
+    },
+
+    debugger(debug)
+    {
+        this.m_debug = debug;
     },
 
     /**
@@ -26,6 +49,8 @@ module.exports = {
         if (comp == null) { return; }
         
         this.m_bind_event.push(node);
+
+        this._debugInfo(comp, node);
     },
     
     /**
@@ -80,9 +105,10 @@ module.exports = {
         this.dispatch(send_data);
     },
 
-    dispatchSprite(path, atlasName, frameName)
+    // 'res'本地  'url'网络
+    dispatchSprite(path, atlasName, frameName, type = 'res')
     {
-        var send_data = this._formatData(path, [atlasName, frameName]);
+        var send_data = this._formatData(path, [atlasName, frameName, type]);
         this.dispatch(send_data);
     },
 

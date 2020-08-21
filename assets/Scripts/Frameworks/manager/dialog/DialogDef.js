@@ -3,7 +3,7 @@
  * @Author: jacklove
  * @LastEditors: jacklove
  * @Date: 2019-04-18 16:27:03
- * @LastEditTime: 2020-07-28 12:45:06
+ * @LastEditTime: 2020-08-19 10:04:47
  */
 
 var DialogDef = module.exports;
@@ -38,10 +38,4 @@ DialogDef.DialogAnimation = cc.Enum({
     flip_to_centre : 11,          // 翻转
 });
 
-// DialogDef.DialogMask = 'Prefab/DialogMask';
-
 DialogDef.DialogEvent = '_dialog_event_';
-
-// Dialog ID
-DialogDef.DialogID = cc.Enum({
-});

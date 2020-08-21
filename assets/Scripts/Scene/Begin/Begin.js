@@ -1,7 +1,7 @@
 /*
  * @Author: jacklove
  * @Date: 2020-07-22 09:35:30
- * @LastEditTime: 2020-07-30 11:40:02
+ * @LastEditTime: 2020-08-17 10:13:33
  * @LastEditors: jacklove
  * @Description: 
  * @FilePath: \NewProject_test\assets\Scripts\Scene\Begin\Begin.js
@@ -35,6 +35,7 @@ cc.Class({
 
     onLoad () {
         unit.init();
+        unit.MVMgr.debugger(true);
         unit.MemoryDetector.showMemoryStatus();
 
         this.pb_loading.node.active = false;

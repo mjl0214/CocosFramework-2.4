@@ -3,7 +3,7 @@
  * @Author: jacklove
  * @Date: 2019-10-14 10:43:12
  * @LastEditors: jacklove
- * @LastEditTime: 2020-07-30 12:34:31
+ * @LastEditTime: 2020-08-12 14:41:13
  */
 
 console.log('InitFramework')
@@ -161,6 +161,9 @@ unit.Transition = Transition;
 // GuideHelper
 import GuideHelper from './helper/guide/GuideHelper';
 unit.GuideHelper = GuideHelper;
+
+import RecordMgr from './helper/guide/RecordMgr';
+unit.RecordMgr = RecordMgr;
 
 // PokoMgr
 import PakoMgr from './helper/gzip/PakoMgr';

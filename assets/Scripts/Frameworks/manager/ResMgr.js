@@ -1,7 +1,7 @@
 /*
  * @Author: jacklove
  * @Date: 2020-07-22 10:37:15
- * @LastEditTime: 2020-07-31 14:20:33
+ * @LastEditTime: 2020-08-21 14:54:24
  * @LastEditors: jacklove
  * @Description: 
  * @FilePath: \NewProject_test\assets\Scripts\Frameworks\manager\ResMgr.js
@@ -22,11 +22,14 @@ module.exports = {
     webImage(url, node)
     {
         cc.assetManager.loadRemote(url + '', {ext: '.png'}, (err, texture) => {
+            // console.error(err, texture, node)
             if (!err && cc.isValid(node)) {
-                let sp = node;
-                sp.spriteFrame = new cc.SpriteFrame(texture);
-                sp.type = cc.Sprite.Type.SIMPLE;
-                sp.sizeMode = cc.Sprite.SizeMode.CUSTOM;
+                // let sp = node;
+                // sp.spriteFrame = new cc.SpriteFrame(texture);
+                // sp.type = cc.Sprite.Type.SIMPLE;
+                // sp.sizeMode = cc.Sprite.SizeMode.CUSTOM;
+
+                this._repSpriteTexture(node.getComponent(cc.Sprite), 'spriteFrame', new cc.SpriteFrame(texture));
             }
         });
     },

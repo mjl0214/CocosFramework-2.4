@@ -1,7 +1,7 @@
 /*
  * @Author: jacklove
  * @Date: 2020-07-28 11:36:00
- * @LastEditTime: 2020-07-28 15:33:31
+ * @LastEditTime: 2020-08-12 13:19:36
  * @LastEditors: jacklove
  * @Description: 
  * @FilePath: \NewProject_test\assets\Scripts\Frameworks\event\EventMgr.js
@@ -123,7 +123,7 @@ module.exports = {
 
     __init__()
     {
-        this._newGroup('default'); // 新建默认分组
+        this.internalGroup('default'); // 新建默认分组
     },
 
     //-------------------------- default --------------------------//
@@ -232,10 +232,11 @@ module.exports = {
             console.error('不能定义系统监听组名字');
             return null;
         }
-        return this._newGroup(group_name);
+        return this.internalGroup(group_name);
     },
 
-    _newGroup(group_name)
+    // 内置
+    internalGroup(group_name)
     {
         var group = new Object();
         group.event_cache = new Object();
