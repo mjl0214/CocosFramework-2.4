@@ -1,7 +1,7 @@
 /*
  * @Author: jacklove
  * @Date: 2019-12-11 15:20:29
- * @LastEditTime: 2020-08-19 10:50:37
+ * @LastEditTime: 2020-08-27 13:29:13
  * @LastEditors: jacklove
  * @Description: 
  * @FilePath: \NewProject_test\assets\Scripts\Frameworks\manager\dialog\DialogMgr.js
@@ -65,7 +65,7 @@ module.exports = {
     // 分配对话框层级索引
     allocDialogIndex()
     {
-        this.m_alloc_index += 2;
+        this.m_alloc_index += 1;
         var audo_index = this.m_alloc_index + this.m_baseZIndex;
         if (audo_index > cc.macro.MAX_ZINDEX) {
             audo_index = cc.macro.MAX_ZINDEX;
@@ -223,21 +223,17 @@ module.exports = {
 
     _autoMaxZIndex()
     {
-        var m_maxZIndex = this.m_baseZIndex;
         var active_amount = 0;
         for (let index = 0; index < this.m_dialogs.length; index++) {
             const _dialog_node_ = this.m_dialogs[index];
-            if (_dialog_node_.zIndex > m_maxZIndex) {
-                m_maxZIndex = _dialog_node_.zIndex;
-            }
-            active_amount++;
+            if (cc.isValid(_dialog_node_)) { active_amount++; }
         }
 
         if (active_amount <= 0) {
-            this.m_dialogIndex = 0;
+            this.m_alloc_index = 0;
         }
 
-        // console.log('this.m_maxZIndex', this.m_maxZIndex);
+        console.log('_autoMaxZIndex', this.m_alloc_index);
     },
 
     _setFactoryState(dialog_id, state)
