@@ -233,7 +233,7 @@ module.exports = {
             this.m_alloc_index = 0;
         }
 
-        console.log('_autoMaxZIndex', this.m_alloc_index);
+        // console.log('_autoMaxZIndex', this.m_alloc_index);
     },
 
     _setFactoryState(dialog_id, state)
