@@ -1,7 +1,7 @@
 /*
  * @Author: jacklove
  * @Date: 2019-12-11 11:05:13
- * @LastEditTime: 2020-07-24 12:11:46
+ * @LastEditTime: 2020-09-02 16:50:24
  * @LastEditors: jacklove
  * @Description: 
  * @FilePath: \NewProject_test\assets\Scripts\Frameworks\net\IHttp.js

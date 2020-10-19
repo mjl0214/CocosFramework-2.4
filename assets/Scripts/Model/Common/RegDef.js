@@ -1,10 +1,10 @@
 /*
  * @Author: jacklove
  * @Date: 2020-03-23 09:27:51
- * @LastEditTime: 2020-07-22 16:37:31
+ * @LastEditTime: 2020-10-19 09:35:02
  * @LastEditors: jacklove
  * @Description: 
- * @FilePath: \NewProject_test\assets\Scripts\Model\Game\RegDef.js
+ * @FilePath: \NewProject_test\assets\Scripts\Model\Common\RegDef.js
  */
 module.exports = {
 
@@ -13,14 +13,7 @@ module.exports = {
     },
 
     DialogID : {
-        dialog_test : 'Prefab/Dialogs/DialogTest',    
+        dialog_test : 'Dialog/DialogTest',    
     },
 
-    MVDef : {
-        gold : 1,
-        diamond : 2,
-        redpacket : 3,
-
-        level : 100,
-    },
 };

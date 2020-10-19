@@ -1,7 +1,7 @@
 /*
  * @Author: jacklove
  * @Date: 2019-12-11 15:20:29
- * @LastEditTime: 2020-08-27 13:29:13
+ * @LastEditTime: 2020-10-19 09:51:25
  * @LastEditors: jacklove
  * @Description: 
  * @FilePath: \NewProject_test\assets\Scripts\Frameworks\manager\dialog\DialogMgr.js
@@ -88,7 +88,7 @@ module.exports = {
         var _dialog_comp_ = this._getDialogComponent(dialog_id);
         if (_dialog_comp_) {
             // 重置显示层级
-            this.setDialogZIndex(_dialog_node_, zIndex);
+            this.setDialogZIndex(_dialog_comp_.node, zIndex);
             // 重调进入函数
             _dialog_comp_.onEnter(params);
 

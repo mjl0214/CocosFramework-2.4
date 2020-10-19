@@ -3,7 +3,7 @@
  * @Author: jacklove
  * @Date: 2019-10-14 10:43:12
  * @LastEditors: jacklove
- * @LastEditTime: 2020-08-12 14:41:13
+ * @LastEditTime: 2020-10-14 14:25:27
  */
 
 console.log('InitFramework')
@@ -134,6 +134,10 @@ unit.BundleMgr = BundleMgr;
 // HTTP
 import IHttp from './net/IHttp';
 unit.IHttp = IHttp;
+
+// HTTP
+import ISuct from './net/scut/ISuct';
+unit.ISuct = ISuct;
 
 // Platform
 import PlatformHelper from './helper/PlatformHelper';

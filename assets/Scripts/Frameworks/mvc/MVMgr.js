@@ -1,7 +1,7 @@
 /*
  * @Author: jacklove
  * @Date: 2020-03-29 11:16:42
- * @LastEditTime: 2020-08-21 14:40:24
+ * @LastEditTime: 2020-10-19 09:34:56
  * @LastEditors: jacklove
  * @Description: 
  * @FilePath: \NewProject_test\assets\Scripts\Frameworks\mvc\MVMgr.js
@@ -11,11 +11,6 @@ module.exports = {
     m_bind_event : [],
 
     m_debug : false,
-
-    registerEvent(event_map)
-    {
-        unit.MVDef.BindDef = cc.Enum(event_map);
-    },
 
     _debugInfo(comp, node)
     {

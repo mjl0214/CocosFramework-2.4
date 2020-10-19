@@ -1,0 +1,44 @@
+{
+    "AbilityID" : 1,
+    "AbilityName" : "普通攻击",
+    "Condition" : [],
+    "OnStart" : [
+        {
+            "Type" : "PlayEffect",
+            "Caster" : "Caster",
+            "EffectName" : "attack_normal_start"
+        },
+        {
+            "Type" : "Function",
+            "FunctionName" : "DelayTime",
+            "Params" : [
+                500
+            ]
+        }
+    ],
+    "OnActions" : [
+        {
+            "Type" : "Function",
+            "FunctionName" : "AttackDamage",
+            "Params" : [
+                "Caster",
+                "Target",
+                "Caster.attack"
+            ]
+        }
+    ],
+    "OnStop" : [
+        {
+            "Type" : "PlayEffect",
+            "Caster" : "Caster",
+            "EffectName" : "attack_normal_end"
+        },
+        {
+            "Type" : "Function",
+            "FunctionName" : "DelayTime",
+            "Params" : [
+                200
+            ]
+        }
+    ]
+}

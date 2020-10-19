@@ -1,10 +1,10 @@
 /*
  * @Author: jacklove
  * @Date: 2019-11-25 11:17:59
- * @LastEditTime: 2019-12-13 13:38:55
+ * @LastEditTime: 2020-10-14 17:02:07
  * @LastEditors: jacklove
  * @Description: 
- * @FilePath: \NewResProject\assets\Script\Frameworks\manager\net\IWebSocket.js
+ * @FilePath: \NewProject_test\assets\Scripts\Frameworks\net\IWebSocket.js
  */
 
 
@@ -51,6 +51,8 @@ cc.Class({
         this.m_funcList[1] = onmessage;
         this.m_funcList[2] = onerror;
         this.m_funcList[3] = onclose;
+
+        // this.m_websocket.binaryType = 'arraybuffer';
     },
 
     onOpen(evt)

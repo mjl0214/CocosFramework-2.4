@@ -1,11 +1,11 @@
 /*
  * @Author: jacklove
  * @Date: 2020-07-22 16:13:00
- * @LastEditTime: 2020-07-29 12:58:38
+ * @LastEditTime: 2020-10-19 09:29:54
  * @LastEditors: jacklove
  * @Description: 
- * @FilePath: \NewProject_test\assets\Scripts\Prefab\DialogTest.js
- */ 
+ * @FilePath: \NewProject_test\assets\Scripts\Dialog\DialogTest.js
+ */
 
 let DialogBase = require("DialogBase")
 
@@ -24,7 +24,7 @@ cc.Class({
 
     onEnter(params)
     {// 对话框被激活时
-        // console.log('DialogBase onEnable');
+        console.log('DialogTest', this.node.zIndex);
         unit.EventMgr.dispatch_s('test', 'test', {data : uTool.UtilMgr.random2Int(1, 1000)});
     },
 
